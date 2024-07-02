@@ -1,0 +1,39 @@
+.adventure-card > img {
+    width: 200px;
+    height: 200px;
+    object-fit:fill
+}
+
+.adventure-card > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.adventure-card{
+    border: 1px solid gainsboro;
+    position: relative;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.adventure-card > div >span:nth-child(2){
+    font-weight: 600;
+}
+
+.adventure-card > div {
+    padding: 0px 4px;
+}
+
+.tag {
+    position: absolute;
+    top: 4px;
+    left: -10px;
+    color: white;
+    border-radius: 2px;
+    padding: 2px;
+    font-weight: 600;
+    background-color: orange;
+}

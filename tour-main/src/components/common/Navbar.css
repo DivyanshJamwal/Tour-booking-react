@@ -1,0 +1,29 @@
+#navbar-container{
+    height: 50px;
+    background-color:azure;
+    display: flex;
+    align-items: center;
+}
+
+#navbar-container span {
+    font-size: large;
+    font-weight:600;
+}
+
+#navbar-container a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#navbar-container > div {
+    display: flex;
+    width: 100vw;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+
+#nav-links{
+    display: flex;
+    gap: 20px;
+}
