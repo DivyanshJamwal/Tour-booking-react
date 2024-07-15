@@ -2,6 +2,10 @@ import React, {useEffect, useState} from 'react'
 import CityCard from './CityCard'
 import "./CityContainer.css"
 
+import config from "./../../config"
+
+const {BASE_API_URL} = config
+
 const CityContainer = ({searchCity}) => {
 
   const [cityData, setCityData] = useState([])
@@ -11,10 +15,10 @@ const CityContainer = ({searchCity}) => {
 
   useEffect(()=>{
 
-    const API_ENDPONT = "https://makemytrip-backend-w2d2.onrender.com/cities"
+    const API_ENDPONT = `${BASE_API_URL}/cities/all`
     
     fetch(API_ENDPONT).then((res)=>res.json()).then((data)=>{
-      setCityData(data)
+      setCityData(data.data)
     })
 
   },[])
@@ -36,11 +40,19 @@ const CityContainer = ({searchCity}) => {
   return (
     <div>
       <div id='city-container'>
-        {filteredCityData.length==0 && <h2>No City Found</h2>}
-        {filteredCityData.map((info, index)=><CityCard key={index} city={info.city} description={info.description} image={info.image} id={info.id}/>)}
+        {filteredCityData && filteredCityData.length === 0 && <h2>No City Found</h2>}
+        {filteredCityData && filteredCityData.map((info, index) => (
+          <CityCard
+            key={index}
+            city={info.city}
+            description={info.description}
+            image={info.image}
+            id={info.id}
+          />
+        ))}
       </div>
     </div>
-  )
+  );
 
 }
 

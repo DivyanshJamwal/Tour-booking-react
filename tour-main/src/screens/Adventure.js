@@ -4,6 +4,9 @@ import AdventureCard from '../components/Adventure/AdventureCard'
 import "./Adventure.css"
 import {Select} from "antd"
 
+import config from "./../config"
+const {BASE_API_URL} = config
+
 const Adventure = () => {
 
   const {id} = useParams()
@@ -102,8 +105,9 @@ const Adventure = () => {
   
 
   useEffect(()=>{
-    const API_ENDPOINT = `https://makemytrip-backend-w2d2.onrender.com/adventures?city=${id}`
-    fetch(API_ENDPOINT).then(res=>res.json()).then((data)=>{
+    const API_ENDPOINT = `${BASE_API_URL}/adventures?city=${id}`
+    fetch(API_ENDPOINT).then(res=>res.json()).then((APIData)=>{
+      const {data} = APIData
       setAdventureData(data)
       setFilteredAdventureData(data)
       // to update the categories
@@ -169,7 +173,7 @@ const Adventure = () => {
       <div id='adventure-card-container'>
         {filteredAdventureData.length==0 && <h2>No Result Found!</h2>}
         {filteredAdventureData.map((info)=>{
-          const {id, name, costPerHead, currency, image, duration, category} = info;
+          const {_id : id, name, costPerHead, currency, image, duration, category} = info;
           return <AdventureCard id={id} name={name} costPerHead={costPerHead} currency={currency} image={image} duration={duration} category={category} />
         })}
       </div>
